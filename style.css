@@ -15,6 +15,14 @@
 .roll {
     height: 100px;
     width: 100px;
+    
+}
+
+.rotate{
+    transition: all 3s ease-in-out;
+}
+.rotate:hover{
+    transform: rotate(360deg);
 }
 
 .button-area {
@@ -42,3 +50,4 @@
     color: #fff;
     transform: translateY(-7px);
 }
+

@@ -1,21 +1,32 @@
 /**********
  * DATA *
  **********/
-let myList = [];
-let nodeList = document.querySelectorAll("h2,img");
-let nodeToArr = Array.prototype.slice.call(nodeList);
-for (const item of nodeList) {
-  myList.push(item);
-}
-myList[0].src = "images/start/d6.png";
-myList[1].innerText = "N/A";
-myList[2].src = "images/start/d6.png";
-myList[3].src = "images/start/d6.png";
-myList[4].innerText = "N/A";
-myList[5].src = "images/start/d12.jpeg";
-myList[6].innerText = "N/A";
-myList[7].src = "images/start/d20.jpg";
-myList[8].innerText = "N/A";
+
+////////////// 1 dice
+let singleDiePic = document.querySelector("#d6-roll");
+singleDiePic.src = "images/start/d6.png";
+let singleDieMean = document.querySelector("#d6-rolls-mean");
+singleDieMean.innerText = "N/A";
+
+///////////// 2 dice
+let doubleDiePic1 = document.querySelector("#double-d6-roll-1");
+doubleDiePic1.src = "images/start/d6.png";
+let doubleDiePic2 = document.querySelector("#double-d6-roll-2");
+doubleDiePic2.src = "images/start/d6.png";
+let doubleDieMean = document.querySelector("#double-d6-rolls-mean");
+doubleDieMean.innerText = "N/A";
+
+////////////// 12 side dice
+let die12Pic = document.querySelector("#d12-roll");
+die12Pic.src = "images/start/d12.jpeg";
+let die12Mean = document.querySelector("#d12-rolls-mean");
+die12Mean.innerText = "N/A";
+
+/////////////// 20 side dice
+let die20Pic = document.querySelector("#d20-roll");
+die20Pic.src = "images/start/d20.jpg";
+let die20Mean = document.querySelector("#d20-rolls-mean");
+die20Mean.innerText = "N/A";
 
 let sixes = [];
 let doubleSixes = [];
@@ -61,27 +72,41 @@ let d12_button = document.querySelector("#d12-button");
 d12_button.addEventListener("click", rollDie12);
 
 let d20_button = document.querySelector("#d20-button");
-d20_button.addEventListener("click", rollDie20)
+d20_button.addEventListener("click", rollDie20);
 
 /******************
  * RESET FUNCTION *
  ******************/
 function reset() {
-  let myList = [];
-  let nodeList = document.querySelectorAll("h2,img");
-  let nodeToArr = Array.prototype.slice.call(nodeList);
-  for (const item of nodeList) {
-    myList.push(item);
-  }
-  myList[0].src = "images/start/d6.png";
-  myList[1].innerText = 0;
-  myList[2].src = "images/start/d6.png";
-  myList[3].src = "images/start/d6.png";
-  myList[4].innerText = 0;
-  myList[5].src = "images/start/d12.jpeg";
-  myList[6].innerText = 0;
-  myList[7].src = "images/start/d20.jpg";
-  myList[8].innerText = 0;
+  sixes = [];
+  doubleSixes = [];
+  twelves = [];
+  twenties = [];
+  ////////////// 1 dice
+  let singleDiePic = document.querySelector("#d6-roll");
+  singleDiePic.src = "images/start/d6.png";
+  let singleDieMean = document.querySelector("#d6-rolls-mean");
+  singleDieMean.innerText = "N/A";
+
+  ///////////// 2 dice
+  let doubleDiePic1 = document.querySelector("#double-d6-roll-1");
+  doubleDiePic1.src = "images/start/d6.png";
+  let doubleDiePic2 = document.querySelector("#double-d6-roll-2");
+  doubleDiePic2.src = "images/start/d6.png";
+  let doubleDieMean = document.querySelector("#double-d6-rolls-mean");
+  doubleDieMean.innerText = "N/A";
+
+  ////////////// 12 side dice
+  let die12Pic = document.querySelector("#d12-roll");
+  die12Pic.src = "images/start/d12.jpeg";
+  let die12Mean = document.querySelector("#d12-rolls-mean");
+  die12Mean.innerText = "N/A";
+
+  /////////////// 20 side dice
+  let die20Pic = document.querySelector("#d20-roll");
+  die20Pic.src = "images/start/d20.jpg";
+  let die20Mean = document.querySelector("#d20-rolls-mean");
+  die20Mean.innerText = "N/A";
 }
 
 /****************************
@@ -91,26 +116,26 @@ function reset() {
 function rollDieSixes() {
   let randomNum = getRandomNumber(6);
   sixes.push(randomNum);
-  myList[1].innerText = getMean(sixes);
+  singleDieMean.innerText = getMean(sixes);
 
   switch (randomNum) {
     case 1:
-      myList[0].src = "images/d6/1.png";
+      singleDiePic.src = "images/d6/1.png";
       break;
     case 2:
-      myList[0].src = "images/d6/2.png";
+      singleDiePic.src = "images/d6/2.png";
       break;
     case 3:
-      myList[0].src = "images/d6/3.png";
+      singleDiePic.src = "images/d6/3.png";
       break;
     case 4:
-      myList[0].src = "images/d6/4.png";
+      singleDiePic.src = "images/d6/4.png";
       break;
     case 5:
-      myList[0].src = "images/d6/5.png";
+      singleDiePic.src = "images/d6/5.png";
       break;
     case 6:
-      myList[0].src = "images/d6/6.png";
+      singleDiePic.src = "images/d6/6.png";
       break;
     default:
       break;
@@ -122,26 +147,26 @@ function rollDoubleSixes() {
   let randomNum2 = getRandomNumber(6);
 
   doubleSixes.push(randomNum1, randomNum2);
-  myList[4].innerText = getMean(doubleSixes);
+  doubleDieMean.innerText = getMean(doubleSixes);
 
   switch (randomNum1) {
     case 1:
-      myList[2].src = "images/d6/1.png";
+      doubleDiePic1.src = "images/d6/1.png";
       break;
     case 2:
-      myList[2].src = "images/d6/2.png";
+      doubleDiePic1.src = "images/d6/2.png";
       break;
     case 3:
-      myList[2].src = "images/d6/3.png";
+      doubleDiePic1.src = "images/d6/3.png";
       break;
     case 4:
-      myList[2].src = "images/d6/4.png";
+      doubleDiePic1.src = "images/d6/4.png";
       break;
     case 5:
-      myList[2].src = "images/d6/5.png";
+      doubleDiePic1.src = "images/d6/5.png";
       break;
     case 6:
-      myList[2].src = "images/d6/6.png";
+      doubleDiePic1.src = "images/d6/6.png";
       break;
     default:
       break;
@@ -149,22 +174,22 @@ function rollDoubleSixes() {
 
   switch (randomNum2) {
     case 1:
-      myList[3].src = "images/d6/1.png";
+      doubleDiePic2.src = "images/d6/1.png";
       break;
     case 2:
-      myList[3].src = "images/d6/2.png";
+      doubleDiePic2.src = "images/d6/2.png";
       break;
     case 3:
-      myList[3].src = "images/d6/3.png";
+      doubleDiePic2.src = "images/d6/3.png";
       break;
     case 4:
-      myList[3].src = "images/d6/4.png";
+      doubleDiePic2.src = "images/d6/4.png";
       break;
     case 5:
-      myList[3].src = "images/d6/5.png";
+      doubleDiePic2.src = "images/d6/5.png";
       break;
     case 6:
-      myList[3].src = "images/d6/6.png";
+      doubleDiePic2.src = "images/d6/6.png";
       break;
     default:
       break;
@@ -174,44 +199,44 @@ function rollDoubleSixes() {
 function rollDie12() {
   let randomNum = getRandomNumber(12);
   twelves.push(randomNum);
-  myList[6].innerText = getMean(twelves);
+  die12Mean.innerText = getMean(twelves);
 
   switch (randomNum) {
     case 1:
-      myList[5].src = "images/numbers/1.png";
+      die12Pic.src = "images/numbers/1.png";
       break;
     case 2:
-      myList[5].src = "images/numbers/2.png";
+      die12Pic.src = "images/numbers/2.png";
       break;
     case 3:
-      myList[5].src = "images/numbers/3.png";
+      die12Pic.src = "images/numbers/3.png";
       break;
     case 4:
-      myList[5].src = "images/numbers/4.png";
+      die12Pic.src = "images/numbers/4.png";
       break;
     case 5:
-      myList[5].src = "images/numbers/5.png";
+      die12Pic.src = "images/numbers/5.png";
       break;
     case 6:
-      myList[5].src = "images/numbers/6.png";
+      die12Pic.src = "images/numbers/6.png";
       break;
     case 7:
-      myList[5].src = "images/numbers/7.png";
+      die12Pic.src = "images/numbers/7.png";
       break;
     case 8:
-      myList[5].src = "images/numbers/8.png";
+      die12Pic.src = "images/numbers/8.png";
       break;
     case 9:
-      myList[5].src = "images/numbers/9.png";
+      die12Pic.src = "images/numbers/9.png";
       break;
     case 10:
-      myList[5].src = "images/numbers/10.png";
+      die12Pic.src = "images/numbers/10.png";
       break;
     case 11:
-      myList[5].src = "images/numbers/11.png";
+      die12Pic.src = "images/numbers/11.png";
       break;
     case 12:
-      myList[5].src = "images/numbers/12.png";
+      die12Pic.src = "images/numbers/12.png";
       break;
     default:
       break;
@@ -221,68 +246,68 @@ function rollDie12() {
 function rollDie20() {
   let randomNum = getRandomNumber(20);
   twenties.push(randomNum);
-  myList[8].innerText = getMean(twenties);
+  die20Mean.innerText = getMean(twenties);
 
   switch (randomNum) {
     case 1:
-      myList[7].src = "images/numbers/1.png";
+      die20Pic.src = "images/numbers/1.png";
       break;
     case 2:
-      myList[7].src = "images/numbers/2.png";
+      die20Pic.src = "images/numbers/2.png";
       break;
     case 3:
-      myList[7].src = "images/numbers/3.png";
+      die20Pic.src = "images/numbers/3.png";
       break;
     case 4:
-      myList[7].src = "images/numbers/4.png";
+      die20Pic.src = "images/numbers/4.png";
       break;
     case 5:
-      myList[7].src = "images/numbers/5.png";
+      die20Pic.src = "images/numbers/5.png";
       break;
     case 6:
-      myList[7].src = "images/numbers/6.png";
+      die20Pic.src = "images/numbers/6.png";
       break;
     case 7:
-      myList[7].src = "images/numbers/7.png";
+      die20Pic.src = "images/numbers/7.png";
       break;
     case 8:
-      myList[7].src = "images/numbers/8.png";
+      die20Pic.src = "images/numbers/8.png";
       break;
     case 9:
-      myList[7].src = "images/numbers/9.png";
+      die20Pic.src = "images/numbers/9.png";
       break;
     case 10:
-      myList[7].src = "images/numbers/10.png";
+      die20Pic.src = "images/numbers/10.png";
       break;
     case 11:
-      myList[7].src = "images/numbers/11.png";
+      die20Pic.src = "images/numbers/11.png";
       break;
     case 12:
-      myList[7].src = "images/numbers/12.png";
+      die20Pic.src = "images/numbers/12.png";
       break;
     case 13:
-      myList[7].src = "images/numbers/13.png";
+      die20Pic.src = "images/numbers/13.png";
       break;
     case 14:
-      myList[7].src = "images/numbers/14.png";
+      die20Pic.src = "images/numbers/14.png";
       break;
     case 15:
-      myList[7].src = "images/numbers/15.png";
+      die20Pic.src = "images/numbers/15.png";
       break;
     case 16:
-      myList[7].src = "images/numbers/16.png";
+      die20Pic.src = "images/numbers/16.png";
       break;
     case 17:
-      myList[7].src = "images/numbers/17.png";
+      die20Pic.src = "images/numbers/17.png";
       break;
     case 18:
-      myList[7].src = "images/numbers/18.png";
+      die20Pic.src = "images/numbers/18.png";
       break;
     case 19:
-      myList[7].src = "images/numbers/19.png";
+      die20Pic.src = "images/numbers/19.png";
       break;
     case 20:
-      myList[7].src = "images/numbers/20.png";
+      die20Pic.src = "images/numbers/20.png";
       break;
     default:
       break;
